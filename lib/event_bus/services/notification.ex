@@ -36,6 +36,7 @@ defmodule EventBus.Service.Notification do
     Enum.each(subscribers, fn subscriber ->
       notify_subscriber(subscriber, event_shadow)
     end)
+
     :ok
   end
 
@@ -66,7 +67,7 @@ defmodule EventBus.Service.Notification do
     msg =
       "Topic(:#{topic}#{registration_status(topic)}) doesn't have subscribers"
 
-    Logger.warn(msg)
+    Logger.warning(msg)
   end
 
   @spec log_error(module(), any()) :: no_return()
